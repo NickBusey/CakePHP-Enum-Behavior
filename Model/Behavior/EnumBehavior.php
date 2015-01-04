@@ -75,6 +75,7 @@ class EnumBehavior extends ModelBehavior {
 	 */
 	public function enumValueToKey(Model $Model, $field, $value) {
 		$enums = $this->enumValues($Model);
+		$field = Inflector::pluralize(Inflector::variable($field));
 		if(array_key_exists($field, $enums)) {
 			$enum = $enums[$field];
 			return array_search($value, $enum);
@@ -91,6 +92,7 @@ class EnumBehavior extends ModelBehavior {
 	 */
 	public function enumKeyToValue(Model $Model, $field, $key) {
 		$enums = $this->enumValues($Model);
+		$field = Inflector::pluralize(Inflector::variable($field));
 		if(array_key_exists($field, $enums)) {
 			$enum = $enums[$field];
 			if(array_key_exists($key, $enum))
